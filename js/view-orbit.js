@@ -57,6 +57,7 @@ const SQUADRON = Object.freeze({
   veers: Object.freeze({ klass: "isd", label: "AVENGER", variant: "ii" }),
   motti: Object.freeze({ klass: "lancer", label: "LANCER" }),
   surgeon: Object.freeze({ klass: "carrack", label: "CARRACK" }),
+  yularen: Object.freeze({ klass: "interceptor", label: null }),
   jerjerrod: Object.freeze({ klass: "interceptor", label: null }),
   tk421: Object.freeze({ klass: "interceptor", label: null }),
   hangar: Object.freeze({ klass: "interceptor", label: null }),
@@ -893,7 +894,7 @@ export function mountOrbit(container, sim) {
         delay: i * 0.28,
       };
       mesh.userData.slot = hangarSlot(i);
-      mesh.userData.flight = 0;
+      mesh.userData.flight = 0.55;
       fighters.push({ unit: u, mesh });
     } else {
       const stationSpec = CAPITAL_STATIONS[u.id];
@@ -992,7 +993,7 @@ export function mountOrbit(container, sim) {
         if (ready) mesh.userData.flight = Math.min(1, mesh.userData.flight + dt * rate);
       } else {
         mesh.userData.launchT = null;
-        mesh.userData.flight = Math.max(0, mesh.userData.flight - dt * rate);
+        mesh.userData.flight = Math.max(0.42, mesh.userData.flight - dt * rate);
       }
       const f = mesh.userData.flight;
       const ease = f * f * (3 - 2 * f);

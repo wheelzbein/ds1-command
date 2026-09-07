@@ -109,7 +109,19 @@ button { font-family: inherit; }
   inset: 0;
   overflow: hidden;
 }
+#stage-2d { background: #05070a; }
 .stage.hidden { display: none; }
+.stage-error {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-family: var(--font-data);
+  letter-spacing: 0.12em;
+  padding: 24px;
+  text-align: center;
+}
 
 .floor {
   position: absolute;
@@ -461,6 +473,10 @@ button { font-family: inherit; }
   display: none;
 }
 @media (max-width: 980px) {
+  .actor { width: 11%; }
+  .actor.sit { width: 10.2%; }
+  .actor.walk { width: 12%; }
+  .actor.sleep { width: 11.5%; }
   .roster-toggle {
     display: block;
     position: absolute;
