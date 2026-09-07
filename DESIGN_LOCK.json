@@ -1,0 +1,56 @@
+{
+  "lockedAt": "2026-09-07",
+  "status": "LOCKED",
+  "liveUrl": "https://wheelzbein.github.io/ds1-command/",
+  "rule": "Do not change visual design unless the user explicitly asks to change how it looks.",
+  "palette": {
+    "bg": "#07090c",
+    "panel": "#0e1218",
+    "line": "#2a3140",
+    "red": "#c41e3a",
+    "gold": "#c9a227",
+    "cyan": "#5ee7ff",
+    "live": "#3dff8a",
+    "idle": "#e7c15a",
+    "away": "#6b7380",
+    "text": "#e8edf4",
+    "muted": "#8b95a6"
+  },
+  "fonts": {
+    "ui": "Exo 2",
+    "data": "Share Tech Mono",
+    "display": "Orbitron"
+  },
+  "layout": {
+    "topbarPx": 56,
+    "footerPx": 42,
+    "rosterPx": 300,
+    "mobileMaxPx": 980,
+    "sheetDesktopCols": 6,
+    "sheetMobileCols": 3
+  },
+  "views": [
+    "LIVE DECK",
+    "HOLOGRAM",
+    "UNIT SET"
+  ],
+  "commands": [
+    "Stand down",
+    "Battle stations",
+    "Officer mess",
+    "Lights out",
+    "Report in"
+  ],
+  "theme": "Galactic Empire / Death Star only. No rebel scum. G.I.C.O.S. stays Vader.",
+  "assets": {
+    "floor": "assets/ds1-floor-live.jpg",
+    "orbit": "assets/ds1-station-orbit.jpg",
+    "units": "assets/units/{id}.png"
+  },
+  "hologram": {
+    "three": "0.170.0",
+    "camera": "orthographic isometric",
+    "fog": "#05070a"
+  },
+  "note": "Fingerprints are the locked visual baseline from 2026-09-07. Do not replace assets or restyle files listed here."
+}
