@@ -34,9 +34,9 @@ const SHIP = Object.freeze({
   tower: 0x5a616a,
   globe: 0x9aa3ad,
   engine: 0x9ee7ff,
-  interceptorHull: 0xe8edf2,
-  interceptorWing: 0xc5ced6,
-  interceptorPylon: 0x5a636c,
+  interceptorHull: 0xf4f7fb,
+  interceptorWing: 0xd8dee6,
+  interceptorPylon: 0x6b7380,
   glass: 0x5ee7ff,
   glassEmissive: 0x163040,
 });
@@ -650,11 +650,18 @@ function makeCarrack() {
 function makeInterceptor() {
   const root = new THREE.Group();
   const hull = mat(SHIP.interceptorHull, {
-    map: makeHullMap("#e8edf2", 11, "rgba(70, 78, 88, 0.55)"),
-    metalness: 0.22,
-    roughness: 0.5,
+    map: makeHullMap("#f4f7fb", 11, "rgba(50, 58, 68, 0.72)"),
+    metalness: 0.04,
+    roughness: 0.72,
+    emissive: 0xe8eef4,
+    emissiveIntensity: 0.62,
   });
-  const dark = mat(SHIP.interceptorPylon, { metalness: 0.32, roughness: 0.42 });
+  const dark = mat(SHIP.interceptorPylon, {
+    metalness: 0.12,
+    roughness: 0.55,
+    emissive: 0x3a424c,
+    emissiveIntensity: 0.28,
+  });
   const glass = mat(SHIP.glass, {
     metalness: 0.9,
     roughness: 0.08,
@@ -687,14 +694,17 @@ function makeInterceptor() {
     shape.lineTo(0.08, -0.06);
     shape.lineTo(0, -0.48);
     shape.closePath();
-    const geo = new THREE.ExtrudeGeometry(shape, { depth: 0.028, bevelEnabled: false });
-    geo.translate(0, 0, -0.014);
+    const geo = new THREE.ExtrudeGeometry(shape, { depth: 0.055, bevelEnabled: false });
+    geo.translate(0, 0, -0.027);
     return geo;
   }
   const wingMat = mat(SHIP.interceptorWing, {
-    map: makeHullMap("#c5ced6", 23, "rgba(28, 34, 42, 0.82)"),
-    metalness: 0.16,
-    roughness: 0.58,
+    map: makeHullMap("#d8dee6", 23, "rgba(28, 34, 42, 0.88)"),
+    metalness: 0.04,
+    roughness: 0.78,
+    emissive: 0xcfd6de,
+    emissiveIntensity: 0.58,
+    side: THREE.DoubleSide,
   });
   const left = new THREE.Mesh(bladeGeo(), wingMat);
   left.position.x = -0.52;
@@ -705,7 +715,7 @@ function makeInterceptor() {
 
   const engine = new THREE.Mesh(
     new THREE.CircleGeometry(0.05, 16),
-    new THREE.MeshBasicMaterial({ color: SHIP.engine, transparent: true, opacity: 0.2, side: THREE.DoubleSide })
+    new THREE.MeshBasicMaterial({ color: SHIP.engine, transparent: true, opacity: 0.7, side: THREE.DoubleSide })
   );
   engine.position.z = -0.16;
   root.add(engine);
@@ -891,7 +901,7 @@ export function mountOrbit(container, sim) {
 
     if (spec.klass === "interceptor") {
       const i = interceptorIndex++;
-      mesh.scale.setScalar(1.7);
+      mesh.scale.setScalar(3.15);
       mesh.userData.spec = {
         radius: 9.2 + (i % 5) * 0.85,
         speed: 0.28 + (i % 4) * 0.06,
