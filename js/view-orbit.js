@@ -901,7 +901,7 @@ export function mountOrbit(container, sim) {
 
     if (spec.klass === "interceptor") {
       const i = interceptorIndex++;
-      mesh.scale.setScalar(3.15);
+      mesh.scale.setScalar(0.48);
       mesh.userData.spec = {
         radius: 9.2 + (i % 5) * 0.85,
         speed: 0.28 + (i % 4) * 0.06,
