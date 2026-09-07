@@ -86,7 +86,7 @@ export function mount2D(stage, sim) {
 }
 
 function statusClass(status) {
-  if (status === "DUTY" || status === "BRIEFING" || status === "WATCH" || status === "GUARD" || status === "REPORT") return "live";
+  if (status === "DUTY" || status === "BRIEFING" || status === "WATCH" || status === "GUARD" || status === "REPORT" || status === "SORTIE" || status === "STATION") return "live";
   if (status === "MESS") return "idle";
   if (status === "NAP" || status === "MEDITATE") return "away";
   if (status === "PATROL") return "live";
