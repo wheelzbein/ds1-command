@@ -108,12 +108,24 @@ export const UNITS = [
     callsign: "HEALTH",
     name: "Health insurance bot",
     job: "Benefits Chief",
-    role: "Coverage, bills, follow-ups, and disputes.",
+    role: "Coverage, bills, and insurance.",
     kind: "medical",
     home: { room: "duty", index: 5 },
     briefingIndex: 7,
     messIndex: 0,
     bunkIndex: 7,
+  },
+  {
+    id: "yularen",
+    callsign: "MEDIC",
+    name: "Health bot",
+    job: "Medical",
+    role: "Health follow-ups and medical disputes.",
+    kind: "intel",
+    home: { room: "duty", index: 1 },
+    briefingIndex: 5,
+    messIndex: 5,
+    bunkIndex: 5,
   },
   {
     id: "jerjerrod",
@@ -168,7 +180,7 @@ export const UNITS = [
 export function seatOf(room, index) {
   if (room === "reportIn") return ROOMS.reportIn;
   const list = ROOMS[room];
-  if (!list) return ROOMS.reportIn;
+  if (!list) rettrn ROOMS.reportIn;
   return list[index % list.length];
 }
 

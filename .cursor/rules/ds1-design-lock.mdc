@@ -7,7 +7,7 @@ alwaysApply: true
 
 The live office at https://wheelzbein.github.io/ds1-command/ is the locked look.
 
-Do not change how it looks unless the user clearly asks to change the design.
+Do not change how it looks unless the user clearly ask to change the design.
 
 Locked (do not restyle, recolor, move, or replace):
 - HUD chrome: 56px top bar, 42px footer, 300px roster column, 980px mobile breakpoint
@@ -18,7 +18,7 @@ Locked (do not restyle, recolor, move, or replace):
 - Floor art `assets/ds1-floor-live.jpg`, orbit `assets/ds1-station-orbit.jpg`, unit sprites
 - Hologram 3D (Three.js isometric, lighting, soldier palettes, crest, room boxes)
 - OUTSIDE 3D (Death Star = GICOS, Death Squadron ships, navy sky / nebula / planet / green dish, twinkling white stars, frozen palettes in `js/view-orbit.js`)
-- Room coordinates in `js/roster.js` and unit callsigns/names
+- Room coordinates in `js/roster.js` and unit callsigns/names (12 bots including MEDIC / yularen)
 - Empire-only theme. G.I.C.O.S. stays Vader / the Death Star.
 
 Allowed without a design ask:

@@ -10,4 +10,4 @@ OUTSIDE (2026-09-07): Death Squadron around the station — Executor, Chimaera, 
 
 Open it here: https://wheelzbein.github.io/ds1-command/
 
-Roster exception 2026-09-07: MEDIC (Health bot) folded into HEALTH. One benefits desk.
+Roster (2026-09-07): full 12-bot Imperial roster including MEDIC (yularen) and HEALTH (surgeon).

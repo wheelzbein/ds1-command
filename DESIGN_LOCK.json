@@ -93,8 +93,8 @@
       "bytes": 11510
     },
     "DESIGN_LOCK.md": {
-      "sha256": "0a3117fee47e6551500a02593d7481baf706dafa67f7a1f08190886727b75b12",
-      "bytes": 667
+      "sha256": "6aa475f6d87d4227ca5026416e5eaf52468feac5225896603907e71b9a7d5c08",
+      "bytes": 677
     },
     "js/main.js": {
       "sha256": "563a3887d13f8c58182ef6bc29f5bfb3b18732479bc4a21cb56c53b8d5f67e29",
@@ -109,8 +109,8 @@
       "bytes": 16985
     },
     "js/roster.js": {
-      "sha256": "0820ac935a689b377bda7f450bb331788600b6d834be6f80968e72b05d850a90",
-      "bytes": 4807
+      "sha256": "f3d83258fe32d739b039f79f3a931040aa1de1ee878e64dea2ff1ca344f8c8f3",
+      "bytes": 5059
     },
     "js/sim.js": {
       "sha256": "8ff1fbe56da1f4e140027080ec8517653a310cbf8b206a7024e973f9547b78c5",
@@ -181,12 +181,12 @@
       "bytes": 28434
     },
     "js/view-orbit.js": {
-      "sha256": "f926a6a3675080b71a816cc156d05b81134c33d9c8707ab57daa177523010dfa",
-      "bytes": 33111
+      "sha256": "a30783bf6d31e88d7830ae05d945f907ea68bcff499e976e28af6a6ec30ef268",
+      "bytes": 33176
     },
     ".cursor/rules/ds1-design-lock.mdc": {
-      "sha256": "39fd34e15a3cf2560bbace530dbcf2fb54275579bb3cdce05b65d5705e8aaf42",
-      "bytes": 1583
+      "sha256": "cdd8c1c1b1ed86d4c63929e21632fa70a93a88cb5982ad8dbba569a7c5235a91",
+      "bytes": 1619
     }
   }
 }
