@@ -29,7 +29,7 @@ export function createSim() {
       moving: false,
       path: [],
       speed: 0.18 + Math.random() * 0.04,
-      idleUntil: 8 + Math.Random() * 18,
+      idleUntil: 8 + Math.random() * 18,
       selected: false,
       task: u.role,
     };
@@ -66,7 +66,7 @@ export function createSim() {
     // Always cut through the crest hall so they "move across the office"
     if (dist(start, via) < 0.05) return [dest];
     if (dist(dest, via) < 0.05) return [via];
-    return [via, dest]{
+    return [via, dest];
   }
 
   function send(unit, room, index, status, pose) {
@@ -221,7 +221,7 @@ export function createSim() {
           continue;
         }
         // officers: work, then break, then nap if still idle-mode
-        const roll = Math.Random();
+        const roll = Math.random();
         if (roll < 0.55) {
           send(u, u.home.room, u.home.index, "DUTY", "sit");
         } else if (roll < 0.8) {

@@ -1,9 +1,49 @@
-/* OUTSIDE view — additive 2026-09-07. Do not change hologram/view3d.js. */
+/* DESIGN LOCKED 2026-09-07. OUTSIDE look, lighting, Death Star, and TIE palettes are frozen. See DESIGN_LOCK.md */
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { CSS2DRenderer, CSS2DObject } from "three/addons/renderers/CSS2DRenderer.js";
 
-const R = 6.4;
+const SPACE = Object.freeze({
+  bg: 0x03050a,
+  fog: 0x03050a,
+  fogDensity: 0.012,
+  ambient: 0x8899aa,
+  sun: 0xfff2d8,
+  rim: 0x5ee7ff,
+  redFill: 0xc41e3a,
+});
+
+const STATION = Object.freeze({
+  radius: 6.4,
+  trench: 0x14171c,
+  gold: 0xc9a227,
+  dish: 0xc41e3a,
+  dishLaunch: 0xff4a63,
+  bay: 0x5ee7ff,
+  atmo: 0x8aa0b0,
+});
+
+const TIE = Object.freeze({
+  hull: 0x16191e,
+  dark: 0x0c0e12,
+  wing: 0x101318,
+  glass: 0x5ee7ff,
+  glassEmissive: 0x163040,
+  engine: 0x5ee7ff,
+  scale: 1.7,
+});
+
+const CAMERA = Object.freeze({
+  fov: 46,
+  x: 16,
+  y: 7.5,
+  z: 20,
+  minDistance: 10,
+  maxDistance: 48,
+  autoRotateSpeed: 0.35,
+});
+
+const R = STATION.radius;
 
 function mat(color, opts = {}) {
   return new THREE.MeshStandardMaterial({
@@ -147,14 +187,14 @@ function makeDeathStar() {
 
   const trench = new THREE.Mesh(
     new THREE.TorusGeometry(R * 0.995, 0.09, 10, 128),
-    mat(0x14171c, { metalness: 0.45, roughness: 0.55 })
+    mat(STATION.trench, { metalness: 0.45, roughness: 0.55 })
   );
   trench.rotation.x = Math.PI / 2;
   root.add(trench);
 
   const goldRing = new THREE.Mesh(
     new THREE.TorusGeometry(R * 1.02, 0.018, 8, 96),
-    mat(0xc9a227, { metalness: 0.8, roughness: 0.25, emissive: 0xc9a227, emissiveIntensity: 0.15 })
+    mat(STATION.gold, { metalness: 0.8, roughness: 0.25, emissive: STATION.gold, emissiveIntensity: 0.15 })
   );
   goldRing.rotation.x = Math.PI / 2;
   root.add(goldRing);
@@ -188,7 +228,7 @@ function makeDeathStar() {
   dish.add(bowl);
   const core = new THREE.Mesh(
     new THREE.CircleGeometry(0.22, 24),
-    new THREE.MeshBasicMaterial({ color: 0xc41e3a, side: THREE.DoubleSide })
+    new THREE.MeshBasicMaterial({ color: STATION.dish, side: THREE.DoubleSide })
   );
   core.rotation.x = -Math.PI / 2;
   core.position.y = 0.02;
@@ -203,7 +243,7 @@ function makeDeathStar() {
     new THREE.BoxGeometry(2.1, 0.62, 0.18),
     new THREE.MeshStandardMaterial({
       color: 0x05070a,
-      emissive: 0x5ee7ff,
+      emissive: STATION.bay,
       emissiveIntensity: 0.55,
       metalness: 0.2,
       roughness: 0.4,
@@ -216,7 +256,7 @@ function makeDeathStar() {
   const atmo = new THREE.Mesh(
     new THREE.SphereGeometry(R * 1.035, 48, 32),
     new THREE.MeshBasicMaterial({
-      color: 0x8aa0b0,
+      color: STATION.atmo,
       transparent: true,
       opacity: 0.07,
       side: THREE.BackSide,
@@ -240,12 +280,12 @@ const WING_ACCENT = Object.freeze({
 function makeTie(kind) {
   const root = new THREE.Group();
   const accent = WING_ACCENT[kind] || 0x9aa3ad;
-  const hull = mat(0x16191e, { metalness: 0.85, roughness: 0.22 });
-  const dark = mat(0x0c0e12, { metalness: 0.7, roughness: 0.35 });
-  const glass = mat(0x5ee7ff, {
+  const hull = mat(TIE.hull, { metalness: 0.85, roughness: 0.22 });
+  const dark = mat(TIE.dark, { metalness: 0.7, roughness: 0.35 });
+  const glass = mat(TIE.glass, {
     metalness: 0.9,
     roughness: 0.08,
-    emissive: 0x163040,
+    emissive: TIE.glassEmissive,
     emissiveIntensity: 0.55,
     opacity: 0.88,
   });
@@ -266,7 +306,7 @@ function makeTie(kind) {
 
   const wingGeo = new THREE.CylinderGeometry(0.52, 0.52, 0.038, 6);
   wingGeo.rotateZ(Math.PI / 2);
-  const wingMat = mat(0x101318, { metalness: 0.55, roughness: 0.48 });
+  const wingMat = mat(TIE.wing, { metalness: 0.55, roughness: 0.48 });
   const left = new THREE.Mesh(wingGeo, wingMat);
   left.position.x = -0.58;
   const right = new THREE.Mesh(wingGeo, wingMat);
@@ -290,14 +330,14 @@ function makeTie(kind) {
 
   const engine = new THREE.Mesh(
     new THREE.CircleGeometry(0.055, 16),
-    new THREE.MeshBasicMaterial({ color: 0x5ee7ff, transparent: true, opacity: 0.2, side: THREE.DoubleSide })
+    new THREE.MeshBasicMaterial({ color: TIE.engine, transparent: true, opacity: 0.2, side: THREE.DoubleSide })
   );
   engine.position.z = -0.175;
   root.add(engine);
 
   const trail = new THREE.Mesh(
     new THREE.ConeGeometry(0.045, 0.55, 8),
-    new THREE.MeshBasicMaterial({ color: 0x5ee7ff, transparent: true, opacity: 0.0 })
+    new THREE.MeshBasicMaterial({ color: TIE.engine, transparent: true, opacity: 0.0 })
   );
   trail.rotation.x = Math.PI / 2;
   trail.position.z = -0.42;
@@ -331,11 +371,11 @@ function orbitPoint(t, spec) {
 
 export function mountOrbit(container, sim) {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x03050a);
-  scene.fog = new THREE.FogExp2(0x03050a, 0.012);
+  scene.background = new THREE.Color(SPACE.bg);
+  scene.fog = new THREE.FogExp2(SPACE.fog, SPACE.fogDensity);
 
-  const camera = new THREE.PerspectiveCamera(46, 1, 0.1, 400);
-  camera.position.set(16, 7.5, 20);
+  const camera = new THREE.PerspectiveCamera(CAMERA.fov, 1, 0.1, 400);
+  camera.position.set(CAMERA.x, CAMERA.y, CAMERA.z);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -349,21 +389,21 @@ export function mountOrbit(container, sim) {
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dampingFactor = 0.06;
-  controls.minDistance = 10;
-  controls.maxDistance = 48;
+  controls.minDistance = CAMERA.minDistance;
+  controls.maxDistance = CAMERA.maxDistance;
   controls.target.set(0, 0, 0);
   controls.autoRotate = true;
-  controls.autoRotateSpeed = 0.35;
+  controls.autoRotateSpeed = CAMERA.autoRotateSpeed;
 
-  scene.add(new THREE.AmbientLight(0x8899aa, 0.45));
-  const sun = new THREE.DirectionalLight(0xfff2d8, 1.35);
+  scene.add(new THREE.AmbientLight(SPACE.ambient, 0.45));
+  const sun = new THREE.DirectionalLight(SPACE.sun, 1.35);
   sun.position.set(40, 18, 22);
   sun.castShadow = true;
   scene.add(sun);
-  const rim = new THREE.DirectionalLight(0x5ee7ff, 0.28);
+  const rim = new THREE.DirectionalLight(SPACE.rim, 0.28);
   rim.position.set(-20, -8, -16);
   scene.add(rim);
-  const redFill = new THREE.PointLight(0xc41e3a, 0.55, 40);
+  const redFill = new THREE.PointLight(SPACE.redFill, 0.55, 40);
   redFill.position.set(4, 3, 8);
   scene.add(redFill);
 
@@ -384,7 +424,7 @@ export function mountOrbit(container, sim) {
   const wing = sim.state.units.filter((u) => u.id !== "vader");
   wing.forEach((u, i) => {
     const mesh = makeTie(u.kind);
-    mesh.scale.setScalar(1.7);
+    mesh.scale.setScalar(TIE.scale);
     mesh.userData.unitId = u.id;
     mesh.userData.spec = {
       radius: 9.2 + (i % 5) * 0.85,
@@ -449,7 +489,7 @@ export function mountOrbit(container, sim) {
     station.rotation.y += dt * 0.04;
     const pulse = 0.35 + Math.sin(t * 2.2) * 0.2;
     station.userData.bowl.material.emissiveIntensity = pulse;
-    station.userData.dishCore.material.color.setHex(sim.state.mode === "launch" ? 0xff4a63 : 0xc41e3a);
+    station.userData.dishCore.material.color.setHex(sim.state.mode === "launch" ? STATION.dishLaunch : STATION.dish);
     station.userData.bay.material.emissiveIntensity = sim.state.mode === "launch" ? 0.95 : 0.4;
 
     const vader = sim.state.units.find((u) => u.id === "vader");
@@ -501,7 +541,7 @@ export function mountOrbit(container, sim) {
         dot.className = "dot " + (live.status === "SORTIE" ? "live" : live.status === "NAP" ? "away" : "idle");
       }
       for (const edge of mesh.userData.edges) {
-        edge.material.color.setHex(unit.selected ? 0x5ee7ff : (WING_ACCENT[live?.kind] || 0x9aa3ad));
+        edge.material.color.setHex(unit.selected ? SPACE.rim : (WING_ACCENT[live?.kind] || 0x9aa3ad));
       }
     }
 
