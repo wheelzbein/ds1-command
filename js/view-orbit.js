@@ -261,13 +261,13 @@ function makeNebulaTexture() {
   }
 
   g.globalCompositeOperation = "lighter";
-  blob(w * 0.22, h * 0.38, 420, "rgba(180, 55, 120, 0.42)");
-  blob(w * 0.18, h * 0.55, 280, "rgba(120, 40, 150, 0.32)");
-  blob(w * 0.78, h * 0.28, 360, "rgba(70, 50, 160, 0.38)");
-  blob(w * 0.62, h * 0.18, 240, "rgba(40, 80, 170, 0.28)");
-  blob(w * 0.48, h * 0.42, 200, "rgba(210, 90, 70, 0.16)");
-  blob(w * 0.88, h * 0.62, 300, "rgba(160, 50, 110, 0.22)");
-  blob(w * 0.35, h * 0.22, 180, "rgba(90, 70, 180, 0.2)");
+  blob(w * 0.22, h * 0.38, 480, "rgba(200, 70, 130, 0.62)");
+  blob(w * 0.18, h * 0.55, 320, "rgba(140, 50, 170, 0.48)");
+  blob(w * 0.78, h * 0.28, 400, "rgba(80, 60, 180, 0.52)");
+  blob(w * 0.62, h * 0.18, 280, "rgba(50, 100, 190, 0.42)");
+  blob(w * 0.48, h * 0.42, 240, "rgba(220, 100, 70, 0.28)");
+  blob(w * 0.88, h * 0.62, 340, "rgba(180, 55, 120, 0.36)");
+  blob(w * 0.35, h * 0.22, 220, "rgba(110, 80, 200, 0.34)");
   g.globalCompositeOperation = "source-over";
 
   for (let i = 0; i < 900; i++) {
@@ -343,7 +343,7 @@ function makeStars() {
     col[i * 3 + 1] = b;
     col[i * 3 + 2] = b;
     phase[i] = Math.random() * Math.PI * 2;
-    size[i] = 1.1 + Math.random() * 2.4;
+        size[i] = 1.6 + Math.random() * 3.2;
   }
   geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
   geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
@@ -360,7 +360,6 @@ function makeStars() {
       uniform float uPixel;
       attribute float aPhase;
       attribute float aSize;
-      attribute vec3 color;
       varying vec3 vColor;
       varying float vTwinkle;
       void main() {
@@ -368,7 +367,7 @@ function makeStars() {
         float tw = 0.42 + 0.58 * abs(sin(uTime * 2.4 + aPhase) * sin(uTime * 1.15 + aPhase * 1.7));
         vTwinkle = tw;
         vec4 mv = modelViewMatrix * vec4(position, 1.0);
-        gl_PointSize = aSize * tw * uPixel * (220.0 / max(1.0, -mv.z));
+        gl_PointSize = aSize * tw * uPixel * (280.0 / max(1.0, -mv.z));
         gl_Position = projectionMatrix * mv;
       }
     `,
@@ -882,7 +881,7 @@ export function mountOrbit(container, sim) {
 
     if (spec.klass === "interceptor") {
       const i = interceptorIndex++;
-      mesh.scale.setScalar(1.45);
+      mesh.scale.setScalar(1.7);
       mesh.userData.spec = {
         radius: 9.2 + (i % 5) * 0.85,
         speed: 0.28 + (i % 4) * 0.06,
