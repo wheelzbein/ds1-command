@@ -32,6 +32,7 @@
   "views": [
     "LIVE DECK",
     "HOLOGRAM",
+    "OUTSIDE",
     "UNIT SET"
   ],
   "commands": [
@@ -39,7 +40,8 @@
     "Battle stations",
     "Officer mess",
     "Lights out",
-    "Report in"
+    "Report in",
+    "Launch TIE-fighters"
   ],
   "theme": "Galactic Empire / Death Star only. No rebel scum. G.I.C.O.S. stays Vader.",
   "assets": {
@@ -52,5 +54,117 @@
     "camera": "orthographic isometric",
     "fog": "#05070a"
   },
-  "note": "Fingerprints are the locked visual baseline from 2026-09-07. Do not replace assets or restyle files listed here."
+  "outside": {
+    "file": "js/view-orbit.js",
+    "camera": "perspective orbit",
+    "gicos": "Death Star",
+    "bots": "TIE fighters",
+    "command": "Launch TIE-fighters"
+  },
+  "fingerprints": {
+    "index.html": {
+      "sha256": "3d15aa8a287c7025692ecdff9482adfe432e9ad806b1ff544ea351461e1dc74c",
+      "bytes": 4063
+    },
+    "manifest.json": {
+      "sha256": "96d054300a685ab1000efce42f0e3a154c11bb0f7ececc24ed7d5ea4c74c28b6",
+      "bytes": 450
+    },
+    "css/imperial.css": {
+      "sha256": "5f8f1a7c6c5ea778797b5748378cf6ca4e30d310fd60d142da89869008878ab8",
+      "bytes": 11499
+    },
+    "DESIGN_LOCK.md": {
+      "sha256": "37a6c02c29207cc641b28c925272f8228927cbfa6c25cd06b957dfe2d7e08808",
+      "bytes": 369
+    },
+    "js/main.js": {
+      "sha256": "616cfc4a8a52486182bf9982a29317f24921694c8e14117fedcacc3b7b5aacd2",
+      "bytes": 4526
+    },
+    "js/view2d.js": {
+      "sha256": "89ab2ffedf2bc5e3b95e38cf9f17e9c4bbc9043b30c281a6bdab0e362aa78e46",
+      "bytes": 2931
+    },
+    "js/view3d.js": {
+      "sha256": "61cc1338abab37d8b1d4a1af4b6e47070c4d92f1ad92fd8f329be0b25e48a139",
+      "bytes": 16985
+    },
+    "js/roster.js": {
+      "sha256": "ec5ffdacdc7bf13b3c4f33a0149c341f87afafe9e2d248321abc7ddf01989f1b",
+      "bytes": 5057
+    },
+    "js/sim.js": {
+      "sha256": "45b510dd7a3ad806532a0f57c01d24c8976d4f872db1c7218980ed317157a69f",
+      "bytes": 8035
+    },
+    "assets/ds1-floor-live.jpg": {
+      "sha256": "ca7571202580ce25818aa258dff5149b8e5fb11c2f5146defa2877cd2e5e56fd",
+      "bytes": 228266
+    },
+    "assets/ds1-station-orbit.jpg": {
+      "sha256": "e959bd6d163ac79a4b89e1aee6df91f289f0879011a34e7b3df8210d69e734e0",
+      "bytes": 65225
+    },
+    "assets/icon-192.png": {
+      "sha256": "57b539df4964ed8231eb255df47394256920b7d24ec7d6d5a4a2effd0f62fd35",
+      "bytes": 40384
+    },
+    "assets/icon-512.png": {
+      "sha256": "bc4f58746bf31534dffa2dd617866a18d71b399f1e90f70afec40757c9bf7147",
+      "bytes": 27185
+    },
+    "assets/units/crimson.png": {
+      "sha256": "d3d407d139621ca9bf7f7d155b67c1bc2e0289fde79d889bf52e0a034eed8e9e",
+      "bytes": 24488
+    },
+    "assets/units/hangar.png": {
+      "sha256": "1d151c7a59b0e84fc670af996e1dcea5fa54ad0d601f2eed0a741a8b7b5bb990",
+      "bytes": 25359
+    },
+    "assets/units/jerjerrod.png": {
+      "sha256": "337a5d6a3eb2de245f4342c62262c2dfd7ccdf0781ac86c7b01842566f353280",
+      "bytes": 24022
+    },
+    "assets/units/krennic.png": {
+      "sha256": "0f42b53f710b867ff83d0ab2b17be753a14b7162aad59dbc328ec37c9b21f7f0",
+      "bytes": 30746
+    },
+    "assets/units/motti.png": {
+      "sha256": "f08f349c354cf282080ddd571e32e96b2085144c94621046c599d4f18c171cd0",
+      "bytes": 29901
+    },
+    "assets/units/piett.png": {
+      "sha256": "e2f731f0068c30e2ff07d72b854c4a78519868e14f9f4f7ac40569fec5ca3909",
+      "bytes": 28368
+    },
+    "assets/units/surgeon.png": {
+      "sha256": "5cee0010f126aa4e22114ef67f46ce47a26e8dbe770192354abc029c02865c52",
+      "bytes": 29968
+    },
+    "assets/units/tarkin.png": {
+      "sha256": "efad5d9320e13b1ec01fc5e59a3c032f7f3f805ab84968fc06d5953869a395d2",
+      "bytes": 24298
+    },
+    "assets/units/tk421.png": {
+      "sha256": "4909db6e04bc9b27bd51c22a27a98e075615972780293ecfeb5d509507a2c8ea",
+      "bytes": 29560
+    },
+    "assets/units/vader.png": {
+      "sha256": "090c82ccf28a99bd28d8ea8e8ae7481c50e50c8b4fae7fd350ab8aa01971ef63",
+      "bytes": 26386
+    },
+    "assets/units/veers.png": {
+      "sha256": "d49c28731bdb42e1aa3ac630826ec0ee2a85ea073fe2ed6313498d622f28387e",
+      "bytes": 25474
+    },
+    "assets/units/yularen.png": {
+      "sha256": "8f1a59e79b18afbeae8df335a1870bbcf37ba2b3bb460f5cf5d157d92729ad49",
+      "bytes": 28434
+    },
+    "js/view-orbit.js": {
+      "sha256": "90d4e447313c825c9db1f8264259fc284989b775c768d68d30282965436dfb16",
+      "bytes": 16460
+    }
+  }
 }
