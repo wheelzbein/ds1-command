@@ -1,3 +1,4 @@
+/* DESIGN LOCKED 2026-09-07. Hologram look, lighting, and unit palettes are frozen. See DESIGN_LOCK.md */
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { CSS2DRenderer, CSS2DObject } from "three/addons/renderers/CSS2DRenderer.js";
@@ -89,15 +90,15 @@ function makePerson(kind) {
   root.add(body);
   root.add(legs);
 
-  const palettes = {
-    darklord: { armor: 0x111111, accent: 0x3a0000, visor: 0x220000, cape: 0x0a0a0a },
-    officer: { armor: 0x4a5340, accent: 0xc9a227, visor: 0x1a1a1a, cape: 0x2a3328 },
-    director: { armor: 0xe8e4dc, accent: 0x111111, visor: 0x1a1a1a, cape: 0x111111 },
-    intel: { armor: 0xd9d4c8, accent: 0xc41e3a, visor: 0x1a1a1a, cape: 0xd0cbbf },
-    medical: { armor: 0xf2f2f2, accent: 0xc41e3a, visor: 0x111111, cape: 0xeaeaea },
-    trooper: { armor: 0xf4f4f4, accent: 0x111111, visor: 0x111111, cape: 0xf4f4f4 },
-    crimson: { armor: 0x8b0e1a, accent: 0xc9a227, visor: 0x1a0505, cape: 0x7a0c16 },
-  };
+  const palettes = Object.freeze({
+    darklord: Object.freeze({ armor: 0x111111, accent: 0x3a0000, visor: 0x220000, cape: 0x0a0a0a }),
+    officer: Object.freeze({ armor: 0x4a5340, accent: 0xc9a227, visor: 0x1a1a1a, cape: 0x2a3328 }),
+    director: Object.freeze({ armor: 0xe8e4dc, accent: 0x111111, visor: 0x1a1a1a, cape: 0x111111 }),
+    intel: Object.freeze({ armor: 0xd9d4c8, accent: 0xc41e3a, visor: 0x1a1a1a, cape: 0xd0cbbf }),
+    medical: Object.freeze({ armor: 0xf2f2f2, accent: 0xc41e3a, visor: 0x111111, cape: 0xeaeaea }),
+    trooper: Object.freeze({ armor: 0xf4f4f4, accent: 0x111111, visor: 0x111111, cape: 0xf4f4f4 }),
+    crimson: Object.freeze({ armor: 0x8b0e1a, accent: 0xc9a227, visor: 0x1a0505, cape: 0x7a0c16 }),
+  });
   const p = palettes[kind] || palettes.trooper;
   const armor = mat(p.armor, { roughness: 0.4, metalness: 0.45 });
   const dark = mat(0x111111, { roughness: 0.5, metalness: 0.2 });

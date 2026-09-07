@@ -1,3 +1,4 @@
+/* DESIGN LOCKED 2026-09-07. Room seats, callsigns, and unit art ids are frozen. See DESIGN_LOCK.md */
 export const ROOMS = {
   briefing: [
     { x: 0.157, y: 0.125 }, { x: 0.193, y: 0.124 }, { x: 0.23, y: 0.124 },
@@ -182,3 +183,14 @@ export function seatOf(room, index) {
   if (!list) return ROOMS.reportIn;
   return list[index % list.length];
 }
+
+function lock(value) {
+  if (value && typeof value === "object") {
+    Object.freeze(value);
+    Object.values(value).forEach(lock);
+  }
+  return value;
+}
+
+lock(ROOMS);
+lock(UNITS);
