@@ -1,8 +1,6 @@
 /* DESIGN LOCKED 2026-09-07. Views LIVE DECK / HOLOGRAM / OUTSIDE / UNIT SET and commands are frozen. See DESIGN_LOCK.md */
 import { createSim } from "./sim.js";
 import { mount2D } from "./view2d.js";
-import { mount3D } from "./view3d.js";
-import { mountOrbit } from "./view-orbit.js";
 
 const sim = createSim();
 const stage2d = document.getElementById("stage-2d");
@@ -13,12 +11,18 @@ const view2d = mount2D(stage2d, sim);
 let view3d = null;
 let viewOrbit = null;
 let mode = "deck";
+let loadingHolo = false;
+let loadingOrbit = false;
 
 const rosterEl = document.getElementById("roster-list");
 const dossierEl = document.getElementById("dossier");
 const logsEl = document.getElementById("logs");
 const clockEl = document.getElementById("clock");
 const badge = document.getElementById("build-badge");
+
+function showStageError(el, text) {
+  el.innerHTML = `<div class="stage-error">${text}</div>`;
+}
 
 function renderRoster() {
   rosterEl.innerHTML = sim.state.units.map((u) => `
@@ -69,7 +73,35 @@ function renderSheet() {
   });
 }
 
-function setMode(next) {
+async function ensureHolo() {
+  if (view3d || loadingHolo) return view3d;
+  loadingHolo = true;
+  try {
+    const { mount3D } = await import("./view3d.js");
+    view3d = mount3D(stage3d, sim);
+  } catch (err) {
+    console.error(err);
+    showStageError(stage3d, "Hologram failed to load. LIVE DECK still runs.");
+  }
+  loadingHolo = false;
+  return view3d;
+}
+
+async function ensureOrbit() {
+  if (viewOrbit || loadingOrbit) return viewOrbit;
+  loadingOrbit = true;
+  try {
+    const { mountOrbit } = await import("./view-orbit.js");
+    viewOrbit = mountOrbit(stageOrbit, sim);
+  } catch (err) {
+    console.error(err);
+    showStageError(stageOrbit, "OUTSIDE failed to load. Tap Launch TIE-fighters again.");
+  }
+  loadingOrbit = false;
+  return viewOrbit;
+}
+
+async function setMode(next) {
   mode = next;
   document.querySelectorAll(".view-toggle button").forEach((b) => {
     b.classList.toggle("on", b.dataset.view === next);
@@ -79,17 +111,13 @@ function setMode(next) {
   stageOrbit.classList.toggle("hidden", next !== "orbit");
   stageSheet.classList.toggle("hidden", next !== "sheet");
   if (next === "sheet") renderSheet();
-  if (next === "holo" && !view3d) {
-    view3d = mount3D(stage3d, sim);
-  }
-  if (next === "orbit" && !viewOrbit) {
-    viewOrbit = mountOrbit(stageOrbit, sim);
-  }
   if (next === "holo") {
+    await ensureHolo();
     view3d?.resize();
     view3d?.render();
   }
   if (next === "orbit") {
+    await ensureOrbit();
     viewOrbit?.resize();
     viewOrbit?.render();
   }
