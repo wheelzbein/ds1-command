@@ -1,13 +1,16 @@
 import { createSim } from "./sim.js";
 import { mount2D } from "./view2d.js";
 import { mount3D } from "./view3d.js";
+import { mountOrbit } from "./view-orbit.js";
 
 const sim = createSim();
 const stage2d = document.getElementById("stage-2d");
 const stage3d = document.getElementById("stage-3d");
+const stageOrbit = document.getElementById("stage-orbit");
 const stageSheet = document.getElementById("stage-sheet");
 const view2d = mount2D(stage2d, sim);
 let view3d = null;
+let viewOrbit = null;
 let mode = "deck";
 
 const rosterEl = document.getElementById("roster-list");
@@ -72,14 +75,22 @@ function setMode(next) {
   });
   stage2d.classList.toggle("hidden", next !== "deck");
   stage3d.classList.toggle("hidden", next !== "holo");
+  stageOrbit.classList.toggle("hidden", next !== "orbit");
   stageSheet.classList.toggle("hidden", next !== "sheet");
   if (next === "sheet") renderSheet();
   if (next === "holo" && !view3d) {
     view3d = mount3D(stage3d, sim);
   }
+  if (next === "orbit" && !viewOrbit) {
+    viewOrbit = mountOrbit(stageOrbit, sim);
+  }
   if (next === "holo") {
     view3d?.resize();
     view3d?.render();
+  }
+  if (next === "orbit") {
+    viewOrbit?.resize();
+    viewOrbit?.render();
   }
 }
 
@@ -87,6 +98,7 @@ document.querySelectorAll("[data-cmd]").forEach((btn) => {
   btn.addEventListener("click", () => {
     sim.sendAll(btn.dataset.cmd);
     document.querySelectorAll("[data-cmd]").forEach((b) => b.classList.toggle("active", b === btn));
+    if (btn.dataset.cmd === "launch") setMode("orbit");
   });
 });
 document.querySelectorAll(".view-toggle button").forEach((btn) => {
@@ -108,6 +120,7 @@ function frame(now) {
   sim.tick(dt);
   view2d.render();
   if (mode === "holo") view3d?.render();
+  if (mode === "orbit") viewOrbit?.render();
   const nowDate = new Date();
   clockEl.textContent = nowDate.toLocaleTimeString("en-GB", { hour12: false });
   badge.classList.toggle("on", sim.state.briefing);
