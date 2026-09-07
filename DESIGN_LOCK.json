@@ -58,15 +58,25 @@
     "file": "js/view-orbit.js",
     "camera": "perspective orbit",
     "gicos": "Death Star",
-    "bots": "TIE fighters",
+    "bots": "Death Squadron",
+    "ships": [
+      "Executor",
+      "Chimaera",
+      "Devastator",
+      "Avenger",
+      "Lancer",
+      "Carrack",
+      "TIE Interceptors"
+    ],
     "command": "Launch TIE-fighters",
+    "look": "navy sky, nebula, planet, green dish, twinkling white stars",
     "locked": true,
     "palettes": [
       "SPACE",
       "STATION",
-      "TIE",
+      "SHIP",
       "CAMERA",
-      "WING_ACCENT"
+      "SQUADRON"
     ]
   },
   "fingerprints": {
@@ -79,12 +89,12 @@
       "bytes": 450
     },
     "css/imperial.css": {
-      "sha256": "08bfe04ac1b4d0c36625e01c60a33e7d5240eed2cc2b76fc9a8cc020da3d6bdd",
+      "sha256": "5873edef25f928d4001e8cce2bcad402eed0010f5800694087714d555e373e26",
       "bytes": 11510
     },
     "DESIGN_LOCK.md": {
-      "sha256": "12f7e1c6d8baf9078dc836c41059e8bb10cc42860aa4c08bcc44c4f009955aec",
-      "bytes": 499
+      "sha256": "0a3117fee47e6551500a02593d7481baf706dafa67f7a1f08190886727b75b12",
+      "bytes": 667
     },
     "js/main.js": {
       "sha256": "563a3887d13f8c58182ef6bc29f5bfb3b18732479bc4a21cb56c53b8d5f67e29",
@@ -171,12 +181,12 @@
       "bytes": 28434
     },
     "js/view-orbit.js": {
-      "sha256": "3377ab59be186b0d37b6579f6d967ecc202cd967d320b7932d58ee9dabc57af3",
-      "bytes": 17305
+      "sha256": "f926a6a3675080b71a816cc156d05b81134c33d9c8707ab57daa177523010dfa",
+      "bytes": 33111
     },
     ".cursor/rules/ds1-design-lock.mdc": {
-      "sha256": "bfd92c9fa6a2be8cf1fb4f6fdc830e46dc3c15acc92050a4d3094382dd35975c",
-      "bytes": 1540
+      "sha256": "39fd34e15a3cf2560bbace530dbcf2fb54275579bb3cdce05b65d5705e8aaf42",
+      "bytes": 1583
     }
   }
 }
