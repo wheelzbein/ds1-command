@@ -1,5 +1,5 @@
 /* DESIGN LOCKED 2026-09-07. Command modes including launch/sortie are frozen. See DESIGN_LOCK.md */
-import { UNITS, seatOf, ROOMS } from "./roster.js";
+import { UNITS, seatOf, ROOMS } from "./roster.js?v=swarm15";
 
 const HALL = ROOMS.reportIn;
 
@@ -29,7 +29,7 @@ export function createSim() {
       moving: false,
       path: [],
       speed: 0.18 + Math.random() * 0.04,
-      idleUntil: 0.2 + Math.random() * 0.8,
+      idleUntil: 8 + Math.random() * 18,
       selected: false,
       task: u.role,
     };
@@ -77,7 +77,7 @@ export function createSim() {
     unit.status = status;
     unit.pose = "walk";
     unit.destPose = pose;
-    unit.idleUntil = 2.2 + Math.random() * 3.8;
+    unit.idleUntil = 12 + Math.random() * 22;
   }
 
   function sendAll(kind) {

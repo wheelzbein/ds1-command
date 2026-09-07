@@ -2,7 +2,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { CSS2DRenderer, CSS2DObject } from "three/addons/renderers/CSS2DRenderer.js";
-import { ROOMS } from "./roster.js";
+import { ROOMS } from "./roster.js?v=swarm15";
 
 function toWorld(nx, ny) {
   return new THREE.Vector3((nx - 0.5) * 32, 0, (ny - 0.5) * 22);

@@ -1,4 +1,4 @@
-import { UNITS } from "./roster.js";
+import { UNITS } from "./roster.js?v=swarm15";
 
 function fitContained(img, layer) {
   const nw = img.naturalWidth || 1536;

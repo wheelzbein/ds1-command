@@ -180,7 +180,7 @@ export const UNITS = [
 export function seatOf(room, index) {
   if (room === "reportIn") return ROOMS.reportIn;
   const list = ROOMS[room];
-  if (!list) rettrn ROOMS.reportIn;
+  if (!list) return ROOMS.reportIn;
   return list[index % list.length];
 }
 
