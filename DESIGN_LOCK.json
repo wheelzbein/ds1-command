@@ -83,8 +83,8 @@
       "bytes": 11510
     },
     "DESIGN_LOCK.md": {
-      "sha256": "a082c21e5d59343a42cf4ad4888e2d8d5deeb1cf8dff884cf58c6b54f3a97cbc",
-      "bytes": 411
+      "sha256": "12f7e1c6d8baf9078dc836c41059e8bb10cc42860aa4c08bcc44c4f009955aec",
+      "bytes": 499
     },
     "js/main.js": {
       "sha256": "563a3887d13f8c58182ef6bc29f5bfb3b18732479bc4a21cb56c53b8d5f67e29",
@@ -99,8 +99,8 @@
       "bytes": 16985
     },
     "js/roster.js": {
-      "sha256": "ec5ffdacdc7bf13b3c4f33a0149c341f87afafe9e2d248321abc7ddf01989f1b",
-      "bytes": 5057
+      "sha256": "0820ac935a689b377bda7f450bb331788600b6d834be6f80968e72b05d850a90",
+      "bytes": 4807
     },
     "js/sim.js": {
       "sha256": "8ff1fbe56da1f4e140027080ec8517653a310cbf8b206a7024e973f9547b78c5",
