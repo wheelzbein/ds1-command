@@ -8,3 +8,5 @@ Locked views: LIVE DECK, HOLOGRAM, OUTSIDE, UNIT SET.
 Locked commands include Launch TIE-fighters. GICOS is the Death Star. Other bots are TIE fighters.
 
 Open it here: https://wheelzbein.github.io/ds1-command/
+
+Roster exception 2026-09-07: MEDIC (Health bot) folded into HEALTH. One benefits desk.
