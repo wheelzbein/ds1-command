@@ -1,3 +1,4 @@
+/* DESIGN LOCKED 2026-09-07. Views LIVE DECK / HOLOGRAM / OUTSIDE / UNIT SET and commands are frozen. See DESIGN_LOCK.md */
 import { createSim } from "./sim.js";
 import { mount2D } from "./view2d.js";
 import { mount3D } from "./view3d.js";
