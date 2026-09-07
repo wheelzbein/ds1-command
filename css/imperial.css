@@ -453,7 +453,7 @@ button { font-family: inherit; }
   .footer span:nth-child(n+3):nth-last-child(n+3) { display: none; }
 }
 /* DESIGN LOCKED 2026-09-07. Do not restyle, recolor, or relayout. See DESIGN_LOCK.md */
-.stage.orbit { background: #03050a; }
+.stage.orbit { background: #071428; }
 .stage.orbit canvas { display: block; width: 100%; height: 100%; }
 .view-toggle { flex-wrap: wrap; justify-content: flex-end; max-width: min(420px, calc(100% - 24px)); }
 

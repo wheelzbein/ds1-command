@@ -17,7 +17,7 @@ Locked (do not restyle, recolor, move, or replace):
 - Fonts: Orbitron, Exo 2, Share Tech Mono
 - Floor art `assets/ds1-floor-live.jpg`, orbit `assets/ds1-station-orbit.jpg`, unit sprites
 - Hologram 3D (Three.js isometric, lighting, soldier palettes, crest, room boxes)
-- OUTSIDE 3D (Death Star = GICOS, other bots = TIE fighters, space lighting, frozen palettes in `js/view-orbit.js`)
+- OUTSIDE 3D (Death Star = GICOS, Death Squadron ships, navy sky / nebula / planet / green dish, twinkling white stars, frozen palettes in `js/view-orbit.js`)
 - Room coordinates in `js/roster.js` and unit callsigns/names
 - Empire-only theme. G.I.C.O.S. stays Vader / the Death Star.
 
