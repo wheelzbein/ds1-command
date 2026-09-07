@@ -91,7 +91,7 @@ async function ensureOrbit() {
   if (viewOrbit || loadingOrbit) return viewOrbit;
   loadingOrbit = true;
   try {
-    const { mountOrbit } = await import("./view-orbit.js");
+    const { mountOrbit } = await import("./view-orbit.js?v=swarm16");
     viewOrbit = mountOrbit(stageOrbit, sim);
   } catch (err) {
     console.error(err);

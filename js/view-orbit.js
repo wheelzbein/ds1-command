@@ -34,8 +34,9 @@ const SHIP = Object.freeze({
   tower: 0x5a616a,
   globe: 0x9aa3ad,
   engine: 0x9ee7ff,
-  interceptorHull: 0x16191e,
-  interceptorWing: 0x101318,
+  interceptorHull: 0xe8edf2,
+  interceptorWing: 0xc5ced6,
+  interceptorPylon: 0x5a636c,
   glass: 0x5ee7ff,
   glassEmissive: 0x163040,
 });
@@ -80,7 +81,7 @@ function mat(color, opts = {}) {
   });
 }
 
-function makeHullMap(hex, seed) {
+function makeHullMap(hex, seed, line = "rgba(18, 22, 28, 0.38)") {
   const w = 512;
   const h = 256;
   const c = document.createElement("canvas");
@@ -89,7 +90,7 @@ function makeHullMap(hex, seed) {
   const g = c.getContext("2d");
   g.fillStyle = hex;
   g.fillRect(0, 0, w, h);
-  g.strokeStyle = "rgba(18, 22, 28, 0.38)";
+  g.strokeStyle = line;
   g.lineWidth = 1;
   for (let x = 0; x < w; x += 14) {
     g.beginPath();
@@ -648,8 +649,12 @@ function makeCarrack() {
 
 function makeInterceptor() {
   const root = new THREE.Group();
-  const hull = mat(SHIP.interceptorHull, { metalness: 0.85, roughness: 0.22 });
-  const dark = mat(SHIP.hullDeep, { metalness: 0.7, roughness: 0.35 });
+  const hull = mat(SHIP.interceptorHull, {
+    map: makeHullMap("#e8edf2", 11, "rgba(70, 78, 88, 0.55)"),
+    metalness: 0.22,
+    roughness: 0.5,
+  });
+  const dark = mat(SHIP.interceptorPylon, { metalness: 0.32, roughness: 0.42 });
   const glass = mat(SHIP.glass, {
     metalness: 0.9,
     roughness: 0.08,
@@ -686,7 +691,11 @@ function makeInterceptor() {
     geo.translate(0, 0, -0.014);
     return geo;
   }
-  const wingMat = mat(SHIP.interceptorWing, { metalness: 0.55, roughness: 0.48 });
+  const wingMat = mat(SHIP.interceptorWing, {
+    map: makeHullMap("#c5ced6", 23, "rgba(28, 34, 42, 0.82)"),
+    metalness: 0.16,
+    roughness: 0.58,
+  });
   const left = new THREE.Mesh(bladeGeo(), wingMat);
   left.position.x = -0.52;
   left.rotation.y = Math.PI;
