@@ -36,7 +36,8 @@ export function createSim() {
 
   const state = {
     units,
-    mode: "stand-down", // stand-down | briefing | mess | lights-out | report-in
+    mode: "stand-down", // stand-down | briefing | mess | lights-out | report-in | launch
+    sortie: false,
     briefing: false,
     clock: 0,
     nextBriefing: 55,
@@ -61,7 +62,6 @@ export function createSim() {
     const start = { x: unit.x, y: unit.y };
     const via = clone(HALL);
     if (dist(start, dest) < 0.08) return [dest];
-    // Always cut through the crest hall so they "move across the office"
     if (dist(start, via) < 0.05) return [dest];
     if (dist(dest, via) < 0.05) return [via];
     return [via, dest];
@@ -82,12 +82,14 @@ export function createSim() {
     state.mode = kind;
     if (kind === "briefing") {
       state.briefing = true;
+      state.sortie = false;
       log("Coordinated build. All units to briefing chamber. Steward presiding.");
       for (const u of units) {
         send(u, "briefing", u.briefingIndex, "BRIEFING", "sit");
       }
     } else if (kind === "stand-down") {
       state.briefing = false;
+      state.sortie = false;
       log("Stand down. Return to assigned stations.");
       for (const u of units) {
         const pose = u.home.room === "duty" || u.home.room === "command" ? "sit" : "stand";
@@ -95,6 +97,7 @@ export function createSim() {
         send(u, u.home.room, u.home.index, status, pose);
       }
     } else if (kind === "mess") {
+      state.sortie = false;
       state.briefing = false;
       log("Recreation cycle. Officer mess is open. No rebel rations.");
       for (const u of units) {
@@ -107,6 +110,7 @@ export function createSim() {
         }
       }
     } else if (kind === "lights-out") {
+      state.sortie = false;
       state.briefing = false;
       log("Lights out. Barracks. The station sleeps. Superlaser on standby.");
       for (const u of units) {
@@ -116,12 +120,28 @@ export function createSim() {
           send(u, "barracks", u.bunkIndex, "NAP", "sleep");
         }
       }
+    } else if (kind === "launch") {
+      state.briefing = false;
+      state.sortie = true;
+      log("Launch TIE-fighters. GICOS holds the station. Wings to orbit.");
+      for (const u of units) {
+        if (u.kind === "darklord") {
+          u.path = [];
+          u.moving = false;
+          u.status = "STATION";
+          u.pose = "stand";
+          u.location = "reportIn";
+          continue;
+        }
+        const hangarIndex = u.home.room === "reception" ? u.home.index : u.briefingIndex % 4;
+        send(u, "reception", hangarIndex, "SORTIE", "stand");
+      }
     } else if (kind === "report-in") {
+      state.sortie = false;
       state.briefing = false;
       log("All hands, report in on the crest.");
       for (const u of units) {
         send(u, "reportIn", 0, "REPORT", "stand");
-        // fan out around crest
       }
       units.forEach((u, i) => {
         const ang = (i / units.length) * Math.PI * 2;
@@ -141,7 +161,7 @@ export function createSim() {
 
   function tick(dt) {
     state.clock += dt;
-    state.nextBriefing -= dt;
+    if (state.mode !== "launch") state.nextBriefing -= dt;
 
     for (const u of units) {
       if (u.moving && u.path.length) {
@@ -166,13 +186,20 @@ export function createSim() {
       }
     }
 
-    // Fan-out of report-in handled above.
+    if (state.mode === "launch") {
+      for (const u of units) {
+        if (u.kind === "darklord") {
+          u.status = "STATION";
+          continue;
+        }
+        if (!u.moving) u.status = "SORTIE";
+      }
+    }
 
     if (state.mode === "stand-down") {
       for (const u of units) {
         if (u.moving || u.idleUntil > 0) continue;
         if (u.kind === "darklord" || u.kind === "crimson") {
-          // patrol the hall then return
           if (u.location !== "reportIn" && Math.random() < 0.5) {
             send(u, "reportIn", 0, "WATCH", "stand");
           } else {
@@ -187,7 +214,6 @@ export function createSim() {
           else send(u, "mess", u.messIndex, "MESS", "sit");
           continue;
         }
-        // officers: work, then break, then nap if still idle-mode
         const roll = Math.random();
         if (roll < 0.55) {
           send(u, u.home.room, u.home.index, "DUTY", "sit");
@@ -202,7 +228,6 @@ export function createSim() {
     if (state.mode === "stand-down" && state.nextBriefing <= 0) {
       sendAll("briefing");
       state.nextBriefing = 70 + Math.random() * 25;
-      // auto stand-down after briefing
       state.briefingEnds = state.clock + 22;
     }
     if (state.briefing && state.briefingEnds && state.clock >= state.briefingEnds && state.mode === "briefing") {
