@@ -1,2 +1,5 @@
-# ds1-command
-DS-1 Command — Death Star live deck for Imperial bots.
+Open this on any phone or computer:
+
+https://wheelzbein.github.io/ds1-command/
+
+Add to Home Screen on iPhone or Android to use it like an app.

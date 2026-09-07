@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DS-1 COMMAND · G.I.C.O.S. LIVE DECK</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="DS-1 Command" />
+    <meta name="theme-color" content="#07090c" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23070a0d' stroke='%23c9a227' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='8' fill='none' stroke='%23c9a227' stroke-width='3'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Orbitron:wght@600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/imperial.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <h1>DEATH STAR COMMAND</h1>
+          <span class="live-word">LIVE DECK</span>
+        </div>
+        <div class="crumbs">DS-1 / <b>G.I.C.O.S.</b> · COMMAND SPIRE · BUILD INTEL · NO REBEL SCUM</div>
+        <div class="top-actions">
+          <span class="chip">WEB</span>
+          <span class="chip live">LIVE</span>
+          <span class="clock" id="clock">00:00:00</span>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <div class="stage-wrap">
+          <div class="orbit-bg"></div>
+          <div class="view-toggle">
+            <button data-view="deck" class="on">LIVE DECK</button>
+            <button data-view="holo">HOLOGRAM</button>
+            <button data-view="sheet">UNIT SET</button>
+          </div>
+          <div class="badge-build" id="build-badge">COORDINATED BUILD · BRIEFING CHAMBER</div>
+          <div id="stage-2d" class="stage"></div>
+          <div id="stage-3d" class="stage hologram hidden"></div>
+          <div id="stage-sheet" class="stage sheet hidden"></div>
+          <button class="roster-toggle" id="roster-toggle" type="button">Roster</button>
+          <div class="overlay-controls">
+            <button class="cmd active" data-cmd="stand-down">Stand down</button>
+            <button class="cmd" data-cmd="briefing">Battle stations</button>
+            <button class="cmd" data-cmd="mess">Officer mess</button>
+            <button class="cmd" data-cmd="lights-out">Lights out</button>
+            <button class="cmd" data-cmd="report-in">Report in</button>
+          </div>
+        </div>
+
+        <aside class="roster">
+          <h2>IMPERIAL ROSTER</h2>
+          <div class="roster-list" id="roster-list"></div>
+          <div>
+            <div class="dossier" id="dossier"></div>
+            <div class="logs" id="logs"></div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="footer">
+        <span>OPS</span>
+        <span>IDENTITY</span>
+        <span>DATA</span>
+        <span>CACHE</span>
+        <span>JOBS</span>
+        <span>INTEGRATIONS</span>
+        <span>NOTIFICATIONS</span>
+        <span>FEATURE FLAGS</span>
+        <span class="ok">SYSTEM HEALTH · NOMINAL</span>
+        <span>REBEL SIGNAL · NONE</span>
+      </footer>
+    </div>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
