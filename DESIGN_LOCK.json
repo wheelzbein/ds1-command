@@ -59,7 +59,15 @@
     "camera": "perspective orbit",
     "gicos": "Death Star",
     "bots": "TIE fighters",
-    "command": "Launch TIE-fighters"
+    "command": "Launch TIE-fighters",
+    "locked": true,
+    "palettes": [
+      "SPACE",
+      "STATION",
+      "TIE",
+      "CAMERA",
+      "WING_ACCENT"
+    ]
   },
   "fingerprints": {
     "index.html": {
@@ -71,16 +79,16 @@
       "bytes": 450
     },
     "css/imperial.css": {
-      "sha256": "5f8f1a7c6c5ea778797b5748378cf6ca4e30d310fd60d142da89869008878ab8",
-      "bytes": 11499
+      "sha256": "08bfe04ac1b4d0c36625e01c60a33e7d5240eed2cc2b76fc9a8cc020da3d6bdd",
+      "bytes": 11510
     },
     "DESIGN_LOCK.md": {
-      "sha256": "37a6c02c29207cc641b28c925272f8228927cbfa6c25cd06b957dfe2d7e08808",
-      "bytes": 369
+      "sha256": "a082c21e5d59343a42cf4ad4888e2d8d5deeb1cf8dff884cf58c6b54f3a97cbc",
+      "bytes": 411
     },
     "js/main.js": {
-      "sha256": "616cfc4a8a52486182bf9982a29317f24921694c8e14117fedcacc3b7b5aacd2",
-      "bytes": 4526
+      "sha256": "563a3887d13f8c58182ef6bc29f5bfb3b18732479bc4a21cb56c53b8d5f67e29",
+      "bytes": 4650
     },
     "js/view2d.js": {
       "sha256": "89ab2ffedf2bc5e3b95e38cf9f17e9c4bbc9043b30c281a6bdab0e362aa78e46",
@@ -95,8 +103,8 @@
       "bytes": 5057
     },
     "js/sim.js": {
-      "sha256": "45b510dd7a3ad806532a0f57c01d24c8976d4f872db1c7218980ed317157a69f",
-      "bytes": 8035
+      "sha256": "8ff1fbe56da1f4e140027080ec8517653a310cbf8b206a7024e973f9547b78c5",
+      "bytes": 8136
     },
     "assets/ds1-floor-live.jpg": {
       "sha256": "ca7571202580ce25818aa258dff5149b8e5fb11c2f5146defa2877cd2e5e56fd",
@@ -163,8 +171,12 @@
       "bytes": 28434
     },
     "js/view-orbit.js": {
-      "sha256": "90d4e447313c825c9db1f8264259fc284989b775c768d68d30282965436dfb16",
-      "bytes": 16460
+      "sha256": "3377ab59be186b0d37b6579f6d967ecc202cd967d320b7932d58ee9dabc57af3",
+      "bytes": 17305
+    },
+    ".cursor/rules/ds1-design-lock.mdc": {
+      "sha256": "bfd92c9fa6a2be8cf1fb4f6fdc830e46dc3c15acc92050a4d3094382dd35975c",
+      "bytes": 1540
     }
   }
 }

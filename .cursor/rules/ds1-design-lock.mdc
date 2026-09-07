@@ -11,18 +11,19 @@ Do not change how it looks unless the user clearly asks to change the design.
 
 Locked (do not restyle, recolor, move, or replace):
 - HUD chrome: 56px top bar, 42px footer, 300px roster column, 980px mobile breakpoint
-- Views and labels: LIVE DECK, HOLOGRAM, UNIT SET (OUTSIDE is an additive view requested later — do not restyle the three locked views to add it)
-
+- Views and labels: LIVE DECK, HOLOGRAM, OUTSIDE, UNIT SET
+- Commands: Stand down, Battle stations, Officer mess, Lights out, Report in, Launch TIE-fighters
 - Palette: `#07090c` bg, `#c41e3a` red, `#c9a227` gold, `#5ee7ff` cyan, `#3dff8a` live
 - Fonts: Orbitron, Exo 2, Share Tech Mono
 - Floor art `assets/ds1-floor-live.jpg`, orbit `assets/ds1-station-orbit.jpg`, unit sprites
 - Hologram 3D (Three.js isometric, lighting, soldier palettes, crest, room boxes)
+- OUTSIDE 3D (Death Star = GICOS, other bots = TIE fighters, space lighting, frozen palettes in `js/view-orbit.js`)
 - Room coordinates in `js/roster.js` and unit callsigns/names
-- Empire-only theme. G.I.C.O.S. stays Vader.
+- Empire-only theme. G.I.C.O.S. stays Vader / the Death Star.
 
 Allowed without a design ask:
 - Bug fixes that do not change pixels, layout, or copy
-- Behavior fixes that keep the same visual states (duty / briefing / mess / nap)
+- Behavior fixes that keep the same visual states (duty / briefing / mess / nap / sortie)
 
 If a task needs a visual change, stop and only do it after the user says to change the look.
 
