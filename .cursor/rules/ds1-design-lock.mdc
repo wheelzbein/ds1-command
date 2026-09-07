@@ -11,7 +11,8 @@ Do not change how it looks unless the user clearly asks to change the design.
 
 Locked (do not restyle, recolor, move, or replace):
 - HUD chrome: 56px top bar, 42px footer, 300px roster column, 980px mobile breakpoint
-- Views and labels: LIVE DECK, HOLOGRAM, UNIT SET
+- Views and labels: LIVE DECK, HOLOGRAM, UNIT SET (OUTSIDE is an additive view requested later — do not restyle the three locked views to add it)
+
 - Palette: `#07090c` bg, `#c41e3a` red, `#c9a227` gold, `#5ee7ff` cyan, `#3dff8a` live
 - Fonts: Orbitron, Exo 2, Share Tech Mono
 - Floor art `assets/ds1-floor-live.jpg`, orbit `assets/ds1-station-orbit.jpg`, unit sprites
